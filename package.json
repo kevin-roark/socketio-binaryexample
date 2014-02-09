@@ -1,0 +1,10 @@
+{
+  "name": "socket.io-binary-example",
+  "version": "0.0.1",
+  "description": "An example app for Socket.IO's binary support",
+  "dependencies": {
+    "debug": "*",
+    "express": "3.4.8",
+    "socket.io": "kevin-roark/socket.io"
+  }
+}

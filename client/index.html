@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<head>
+  <meta charset="utf-8">
+  <title>LOOK DOGE BINARY</title>
+
+  <link rel="stylesheet" href="css/style.css">
+</head>
+<body>
+
+  <div id="doge-title">LOOK DOGE</div>
+
+  <img id="doge-image" src=""></div>
+
+  <script src="js/jquery.min.js"></script>
+  <script src="/socket.io/socket.io.js"></script>
+  <script>
+    var socket = io();
+
+    socket.on('plz', function(data){
+      console.log('plz work!!!');
+
+      var blob = new Blob([data]);
+
+      var reader = new FileReader();
+      reader.onload = function(e) {
+        console.log(e.target.result);
+      }
+      reader.readAsText(blob);
+    });
+
+    socket.on('doge', function(data) {
+      console.log('dogee!!!!');
+
+      var blob = new Blob([data]);
+      var dogeURL = URL.createObjectURL(blob);
+      $('#doge-image').attr('src', dogeURL);
+    });
+
+  </script>
+</body>
