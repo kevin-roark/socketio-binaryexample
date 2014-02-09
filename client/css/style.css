@@ -3,10 +3,13 @@ html, body {
     padding: 0;
     width: 100%;
     height: 100%;
+    overflow: hidden;
 }
 
 body {
     padding-top: 20px;
+    font-family: "Comic Sans MS", cursive, sans-serif;
+    color: black;
 }
 
 #doge-title {
@@ -16,4 +19,9 @@ body {
 
 #doge-image {
     padding-left: 30px;
+}
+
+.doge-text {
+    position: absolute;
+    font-size: 3em;
 }

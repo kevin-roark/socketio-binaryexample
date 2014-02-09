@@ -9,6 +9,8 @@
 
   <div id="doge-title">LOOK DOGE</div>
 
+  <button id="get-doge">Get doge</button>
+
   <img id="doge-image" src=""></div>
 
   <script src="js/jquery.min.js"></script>
@@ -16,24 +18,37 @@
   <script>
     var socket = io();
 
+    // transfer binary data to utf8 doge text
     socket.on('plz', function(data){
-      console.log('plz work!!!');
-
       var blob = new Blob([data]);
 
       var reader = new FileReader();
       reader.onload = function(e) {
-        console.log(e.target.result);
+        var text = e.target.result;
+        var left = Math.round(Math.random() * ($('body').width() - 100));
+        var top = Math.round(Math.random() * ($('body').height() - 100));
+        var color = 'rgb(' + Math.round(Math.random() * 255) + ','
+                  + Math.round(Math.random() * 255) + ','
+                  + Math.round(Math.random() * 255) + ')';
+
+        var el = '<p class="doge-text" style="left: ' + left + 'px; top: ' + top + 'px; color: ' + color + ';">'
+               + text
+               + '</p>'
+        $('body').append(el);
       }
       reader.readAsText(blob);
     });
 
-    socket.on('doge', function(data) {
-      console.log('dogee!!!!');
-
+    // get the image from data and set the background
+    socket.on('doge', function(data) { 
       var blob = new Blob([data]);
       var dogeURL = URL.createObjectURL(blob);
-      $('#doge-image').attr('src', dogeURL);
+      $('body').css('background', 'url(' + dogeURL + ')');
+    });
+
+    // emit event to get more doge text
+    $('#get-doge').click(function() {
+      socket.emit('get-doge-plz');
     });
 
   </script>
