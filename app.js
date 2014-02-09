@@ -7,8 +7,11 @@ var io = require('socket.io')(server);
 app.use(express.static(__dirname + '/client'));
 
 var doge_texts = ['plz', 'lol', 'such node', 
-                  'such binary', 'how data', 'emits event', 
-                  'doge socket', 'many socket', 'coins?'];
+                  'such binary', 'how data', 'cool event',
+                  'doge socket', 'many socket', 'coins?',
+                  'wow', 'so image', 'am doge',
+                  'elite connect'
+];
 function get_doge_text() {
     var items = doge_texts;
     var item = items[Math.floor(Math.random()*items.length)];
