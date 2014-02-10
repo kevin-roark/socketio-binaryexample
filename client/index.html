@@ -13,6 +13,8 @@
 
   <img id="doge-image" src=""></div>
 
+  <input type="file" id="files" />
+
   <script src="js/jquery.min.js"></script>
   <script src="/socket.io/socket.io.js"></script>
   <script>
@@ -50,6 +52,14 @@
     $('#get-doge').click(function() {
       socket.emit('get-doge-plz');
     });
+
+    document.getElementById('files').addEventListener('change', function(event) {
+      var files = event.target.files;
+      if (files.length) {
+        var file = files[0]; // grab first file
+        socket.emit('send-file', file);
+      }
+    }, false);
 
   </script>
 </body>
