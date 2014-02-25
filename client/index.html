@@ -43,8 +43,8 @@
 
     var setBackground = false;
     // get the image from data and set the background
-    socket.on('doge', function(data) { 
-      var blob = new Blob([data]);
+    socket.on('doge', function(data) { // data is Uint8Array with .buffer
+      var blob = new Blob([data.buffer]);
       var dogeURL = URL.createObjectURL(blob);
       if (!setBackground) {
         $('body').css('background', 'url(' + dogeURL + ')');

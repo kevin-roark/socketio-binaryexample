@@ -41,3 +41,21 @@ took 416 ms to send and receive doge image
 took 448 ms to send and receive doge image
 took 435 ms to send and receive doge image
 average time to send and receive: 443.7 ms
+
+/* BELOW ARE RESULTS FROM SOCKET.IO FIX/BUILD-SIZE USING JSON-BUFF */
+
+From localtunnel:
+
+took 140 ms to send and receive doge image
+took 58 ms to send and receive doge image
+took 63 ms to send and receive doge image
+took 71 ms to send and receive doge image
+took 50 ms to send and receive doge image
+took 46 ms to send and receive doge image
+took 44 ms to send and receive doge image
+took 66 ms to send and receive doge image
+took 42 ms to send and receive doge image
+took 64 ms to send and receive doge image
+average time to send and receive: 64.4 ms
+
+/* AS SHOULD BE EVIDENT, MSGPACK SEEMS QUITE BAD */
