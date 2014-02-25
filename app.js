@@ -21,10 +21,35 @@ function get_doge_text() {
 
 io.on('connection', function(socket) {
 
-    // immediately on connection send the client a doge image!!
-    fs.readFile(__dirname + '/images/doge.jpg', function(err, data){
+    var dogeTimes = [];
+    var dogeToSend = 10;
+    var sendDogeTime;
+
+    function sendDoge() {
+      fs.readFile(__dirname + '/images/doge.jpg', function(err, data){
         if (err) return done(err);
+        sendDogeTime = new Date().getTime();
         socket.emit('doge', data);
+      });
+    };
+
+    // immediately on connection send the client a doge image!!
+    sendDoge();
+
+    socket.on('got-doge-take-another', function(buf) {
+      var receivedTime = new Date().getTime();
+      var sendTime = receivedTime - sendDogeTime;
+      console.log('took ' + sendTime + ' ms to send and receive doge image');
+      dogeTimes.push(sendTime);
+      if (dogeTimes.length < dogeToSend) {
+        sendDoge();
+      }
+      else {
+        var sumTimes = 0;
+        for (var i=0; i<dogeTimes.length; i++) { sumTimes += dogeTimes[i];}
+        var avgTime = sumTimes / dogeTimes.length;
+        console.log('average time to send and receive: ' + avgTime + ' ms');
+      }
     });
 
     // when the client asks for doge text, we give it to them (as binary just to show it off)

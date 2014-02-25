@@ -11,7 +11,7 @@
 
   <button id="get-doge">Get doge</button>
 
-  <img id="doge-image" src=""></div>
+  <img id="doge-image" src=""></img>
 
   <input type="file" id="files" />
 
@@ -41,11 +41,16 @@
       reader.readAsText(blob);
     });
 
+    var setBackground = false;
     // get the image from data and set the background
     socket.on('doge', function(data) { 
       var blob = new Blob([data]);
       var dogeURL = URL.createObjectURL(blob);
-      $('body').css('background', 'url(' + dogeURL + ')');
+      if (!setBackground) {
+        $('body').css('background', 'url(' + dogeURL + ')');
+        setBackground = true;
+      }
+      socket.emit('got-doge-take-another', blob);
     });
 
     // emit event to get more doge text
