@@ -59,3 +59,19 @@ took 64 ms to send and receive doge image
 average time to send and receive: 64.4 ms
 
 /* AS SHOULD BE EVIDENT, MSGPACK SEEMS QUITE BAD */
+
+/* BELOW ARE RESULTS FROM SOCKET.IO ADD/BETTER-BINARY-EVENTS */
+
+From localtunnel:
+
+took 275 ms to send and receive doge image
+took 84 ms to send and receive doge image
+took 79 ms to send and receive doge image
+took 74 ms to send and receive doge image
+took 107 ms to send and receive doge image
+took 108 ms to send and receive doge image
+took 112 ms to send and receive doge image
+took 75 ms to send and receive doge image
+took 85 ms to send and receive doge image
+took 85 ms to send and receive doge image
+average time to send and receive: 108.4 ms
